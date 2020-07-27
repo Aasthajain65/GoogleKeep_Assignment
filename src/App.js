@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import ReactDom from "react-dom";
 import "./App.css";
 import Header from "./Component/Header.js";
 import CreateNote from "./Component/CreateNote";

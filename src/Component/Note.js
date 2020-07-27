@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline";
-import { Button, colors } from "@material-ui/core";
+import { Button} from "@material-ui/core";
 import {
   customNoteStyles,
   customButtonStyles,
