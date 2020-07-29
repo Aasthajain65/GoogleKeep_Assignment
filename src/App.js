@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./App.css";
-import Header from "./Component/Header.js";
+// import Header from "./Component/Header.js";
+import Newheader from "./Component/Newheader.js";
 import CreateNote from "./Component/CreateNote";
 import Note from "./Component/Note.js";
 import Footer from "./Component/Footer.js";
@@ -48,7 +49,8 @@ function App() {
 
   return (
     <div>
-      <Header />
+      <Newheader/>
+      {/* <Header /> */}
       <CreateNote passNote={addNote} />
       {addItem.map((val, index) => {
         return (
