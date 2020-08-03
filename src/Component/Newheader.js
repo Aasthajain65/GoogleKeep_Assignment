@@ -64,9 +64,20 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SearchAppBar() {
-  const classes = useStyles();
+const SearchAppBar = (props) => {
+  // state = {
+  //   searchInput: ""
+  // }
 
+  // searchHandler = (event) => {
+  //   console.log('me aya me aya me ayay ')
+  //   this.setState({
+  //     searchInput: event.target.value
+  //   })
+  // }
+  const classes = useStyles();
+  // console.log(this.props)
+  
   return (
     <div className={classes.root}>
         <header position="static">
@@ -95,11 +106,14 @@ export default function SearchAppBar() {
                 input: classes.inputInput,
               }}
               inputProps={{ "aria-label": "search" }}
+              onChange = {(event) => props.searchHandler(event.target.value)}
             />
           </div>
+         
         </Toolbar>
       {/* </AppBar> */}
       </header>
     </div>
   );
 }
+export default SearchAppBar;

@@ -5,6 +5,7 @@ import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import blueGrey from "@material-ui/core/colors/blueGrey";
 import lightGreen from "@material-ui/core/colors/lightGreen";
 import CssBaseline from "@material-ui/core/CssBaseline";
+import { NavigationContainer ,DarkTheme} from '@react-navigation/native';
 
 function Header() {
   // const [darkMode, setDarkMode] = useState(false);
@@ -28,23 +29,30 @@ function Header() {
   // const lightTheme = createMuiTheme({});
 
   return (
-    // <ThemeProvider theme={darkTheme}>
-    //   <Paper>
-    //   <header>
-    //   <h1><NoteIcon/>Google Keep</h1>
-    //   <Switch checked={darkMode} onchange={() => setDarkMode(!darkMode)} />
-    // </header>
-    //   </Paper>
-    // </ThemeProvider>
-    <div>
+    <>
+    <NavigationContainer theme={DarkTheme}>
+    <ThemeProvider >
+      <Paper>
+      <header>
+      <h1><NoteIcon/>Google Keep</h1>
+      {/* <Switch checked={darkMode} onchange={() => setDarkMode(!darkMode)} /> */}
+      <Switch/>
+    </header>
+      </Paper>
+    </ThemeProvider>
+    </NavigationContainer>
+
+    {/* <div>
       <header>
         <h1>
           <NoteIcon />
           Google Keep
         </h1>
       </header>
-    </div>
+    </div> */}
+    </>
   );
+
 }
 
 export default Header;

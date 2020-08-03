@@ -1,10 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline";
 import { Button} from "@material-ui/core";
-import {
-  customNoteStyles,
-  customButtonStyles,
-  blurBackground,
+import {customNoteStyles,customButtonStyles,blurBackground,
 } from "../custom-styles/note-expanded.js";
 
 const Note = (props) => {
@@ -51,7 +48,7 @@ const Note = (props) => {
         className="note"
         style={isClicked ? customNoteStyles : null}
       >
-        <h1 contentEditable="true" className="editable title">
+        <h1 contentEditable="true" className="editable title" onClick={props.updateTitle}>
           {props.title}
         </h1>
         <br></br>

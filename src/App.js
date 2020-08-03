@@ -6,8 +6,33 @@ import CreateNote from "./Component/CreateNote";
 import Note from "./Component/Note.js";
 import Footer from "./Component/Footer.js";
 
+
 function App() {
   const [addItem, setAddItem] = useState([]);
+  const [searchItem, setSearchItem] = useState([]);
+  const [searchBool, setSearchBool] = useState(0);
+  console.log(addItem);
+  console.log("setttt", searchItem);
+
+
+  //Search Function
+  const searchHandler = (value) => {
+    console.log("search called", value);
+    if (value === "") {
+      setSearchBool(0);
+      return;
+    }
+    let newData = addItem.filter((data) => {
+      // return data.title == value;
+      console.log("old >>", data.title === value)
+      console.log(data.title.indexOf(value) !==-1)
+      return (data.title.indexOf(value)!==-1)
+    });
+    console.log(">>>>> NewData", newData);
+    
+    setSearchItem(newData);
+    setSearchBool(1);
+  };
 
   //Adding new Note Logic
   const addNote = (note) => {
@@ -16,7 +41,7 @@ function App() {
       return [...prevData, note];
     });
 
-    //console.log(note);
+    //  console.log(note);
   };
 
   // delete Note
@@ -30,6 +55,7 @@ function App() {
 
   // Update Note
   function updateTitle(event, id) {
+    console.log("skladjklsajdkljasdkljasld>>>>>")
     if (event.currentTarget.id === "note") {
       setAddItem((prevData) => {
         let foundNoteIndex = prevData.findIndex((item) => item.key === id);
@@ -37,6 +63,7 @@ function App() {
         return [...prevData];
       });
     }
+    setSearchBool(0)
   }
 
   function updateContent(event, id) {
@@ -45,27 +72,59 @@ function App() {
       prevData[foundNoteIndex].content = event.target.value;
       return [...prevData];
     });
+    setSearchBool(0)
   }
 
+  // componentWillMount() {
+  //   // load items array from localStorage, set in state
+  //   let itemsList = localStorage.getItem('items')
+  //   if (itemsList) {
+  //     this.setState({
+  //       items: JSON.parse(localStorage.getItem('items'))
+  //     })
+  //   }
+  // }
+  // componentDidUpdate() {
+  //   // on each update, sync our state with localStorage
+  //   localStorage.setItem('items', JSON.stringify(this.state.items))
+  // }
+
   return (
+    
     <div>
-      <Newheader/>
+       
+      <Newheader searchHandler={searchHandler} />
       {/* <Header /> */}
       <CreateNote passNote={addNote} />
-      {addItem.map((val, index) => {
-        return (
-          <Note
-            key={index}
-            id={index}
-            title={val.title}
-            content={val.content}
-            deleteItem={onDelete}
-            updateTitle={updateTitle}
-            updateContent={updateContent}
-          />
-        );
-      })}
+      {searchBool == 0
+        ? addItem.map((val, index) => {
+            return (
+              <Note
+                key={index}
+                id={index}
+                title={val.title}
+                content={val.content}
+                deleteItem={onDelete}
+                updateTitle={updateTitle}
+                updateContent={updateContent}
+              />
+            );
+          })
+        : searchItem.map((val, index) => {
+            return (
+              <Note
+                key={index}
+                id={index}
+                title={val.title}
+                content={val.content}
+                deleteItem={onDelete}
+                updateTitle={updateTitle}
+                updateContent={updateContent}
+              />
+            );
+          })}
       <Footer />
+      
     </div>
   );
 }

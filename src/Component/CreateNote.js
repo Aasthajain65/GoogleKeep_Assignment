@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Button from "@material-ui/core/Button";
 import AddIcon from "@material-ui/icons/Add";
 
+
 const CreateNote = (props) => {
   // by default setexpand  is false
   const [expand, setExpand] = useState(false);
@@ -37,7 +38,7 @@ const CreateNote = (props) => {
         [name]: value,
       };
     });
-    console.log(name);
+    console.log("name >>>" ,name);
   };
 
   const addEvent = () => {
@@ -76,6 +77,7 @@ const CreateNote = (props) => {
         {expand ? (
           <Button onClick={addEvent}>
             <AddIcon />
+            {/* <AddCircleIcon/> */}
           </Button>
         ) : null}
       </form>
