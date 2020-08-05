@@ -65,16 +65,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const SearchAppBar = (props) => {
-  // state = {
-  //   searchInput: ""
-  // }
-
-  // searchHandler = (event) => {
-  //   console.log('me aya me aya me ayay ')
-  //   this.setState({
-  //     searchInput: event.target.value
-  //   })
-  // }
+  
   const classes = useStyles();
   // console.log(this.props)
   

@@ -55,7 +55,7 @@ function App() {
 
   // Update Note
   function updateTitle(event, id) {
-    console.log("skladjklsajdkljasdkljasld>>>>>")
+    console.log("console>>>>>")
     if (event.currentTarget.id === "note") {
       setAddItem((prevData) => {
         let foundNoteIndex = prevData.findIndex((item) => item.key === id);
@@ -96,7 +96,7 @@ function App() {
       <Newheader searchHandler={searchHandler} />
       {/* <Header /> */}
       <CreateNote passNote={addNote} />
-      {searchBool == 0
+      {searchBool === 0
         ? addItem.map((val, index) => {
             return (
               <Note
